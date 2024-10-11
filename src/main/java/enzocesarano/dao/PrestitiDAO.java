@@ -17,30 +17,19 @@ public class PrestitiDAO {
     }
 
     public List<Catalogo> findElementiPrestitoInCorso(UUID numeroTessera) {
-        List<UUID> elementiID;
         List<Catalogo> elementiSearch = new ArrayList<>();
-
         try {
-            TypedQuery<UUID> query = entityManager.createNamedQuery("findElementiPrestitoInCorso", UUID.class);
+            TypedQuery<Catalogo> query = entityManager.createNamedQuery("findElementiPrestitoInCorso", Catalogo.class);
             query.setParameter("numeroTessera", numeroTessera);
-            elementiID = query.getResultList();
 
-            if (!elementiID.isEmpty()) {
-                DefaultDAO getById = new DefaultDAO(entityManager);
-                for (UUID id : elementiID) {
-                    try {
-                        Catalogo catalogo = getById.getEntityById(Catalogo.class, id.toString());
-                    } catch (Exception e) {
-                        System.out.println("Errore nella ricerca dell'elemento per ID: " + id + ". " + e.getMessage());
-                    }
-                }
-            } else {
+            elementiSearch = query.getResultList();
+
+            if (elementiSearch.isEmpty()) {
                 System.out.println("Nessun elemento in prestito trovato per la tessera: " + numeroTessera);
             }
         } catch (Exception e) {
             System.out.println("Errore durante la ricerca degli elementi in prestito per tessera: " + numeroTessera + ". " + e.getMessage());
         }
-
         return elementiSearch;
     }
 

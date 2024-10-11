@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @Entity
 
 @NamedQuery(name = "findElementiPrestitoInCorso",
-        query = "SELECT p.elementoPrestato.id FROM Prestiti p WHERE p.utente.numero_tessera = :numeroTessera AND CURRENT_DATE BETWEEN p.data_inizio_prestito AND p.data_restituzione_prevista")
+        query = "SELECT ep FROM Prestiti p JOIN p.elementoPrestato ep WHERE p.utente.numero_tessera = :numeroTessera AND CURRENT_DATE BETWEEN p.data_inizio_prestito AND p.data_restituzione_prevista")
 
 @NamedQuery(name = "findScadutiENonRestituiti", query = "SELECT p FROM Prestiti p WHERE p.data_restituzione_prevista < CURRENT_DATE AND p.data_restituzione_effettiva IS NULL")
 

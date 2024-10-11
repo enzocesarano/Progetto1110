@@ -3,7 +3,6 @@ package enzocesarano;
 import enzocesarano.dao.CatalogoDAO;
 import enzocesarano.dao.DefaultDAO;
 import enzocesarano.dao.PrestitiDAO;
-import enzocesarano.entities.Catalogo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -90,7 +89,7 @@ public class Application {
         dd.save(prestito5);
         */
 
-        System.out.println("\n*********************** RMOZIONE DI UN ELEMENTO DATO UN ID ***********************\n");
+        /*System.out.println("\n*********************** RMOZIONE DI UN ELEMENTO DATO UN ID ***********************\n");
         dd.delete(Catalogo.class, "119ca138-3a1c-4632-99d9-753bb4596666");      // cambia l'id per testare il metodo (id già utilizzato).
 
         System.out.println("\n*********************** RICERCA PER ID ***********************\n");
@@ -104,13 +103,14 @@ public class Application {
         cd.ricercaPerTitolo("the").forEach(System.out::println);
 
         System.out.println("\n*********************** RICERCA PER AUTORE ***********************\n");
-        cd.ricercaPerAutore("J.R.R. Tolkien").forEach(System.out::println);          // questo metodo è praticamente identico a quello della ricerca per titolo.
+        cd.ricercaPerAutore("J.R.R. Tolkien").forEach(System.out::println)*/
+        ;          // questo metodo è praticamente identico a quello della ricerca per titolo.
 
         System.out.println("\n*********************** IN PRESTITO PER NUMERO DI TESSERA ***********************\n");
         pd.findElementiPrestitoInCorso(UUID.fromString("2cf68bbe-06b0-45d6-a5d0-70fd75bbc8e0")).forEach(System.out::println);
 
-        System.out.println("\n*********************** PRESTITI SCADUTI E NON RESTITUITI ***********************\n");
-        pd.scadutiNonRestituiti().forEach(System.out::println);
+        /*System.out.println("\n*********************** PRESTITI SCADUTI E NON RESTITUITI ***********************\n");
+        pd.scadutiNonRestituiti().forEach(System.out::println);*/
 
         em.close();
         emf.close();
