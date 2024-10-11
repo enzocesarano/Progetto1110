@@ -7,8 +7,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-import java.util.UUID;
-
 public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("progetto11_10_2024");
 
@@ -103,14 +101,13 @@ public class Application {
         cd.ricercaPerTitolo("the").forEach(System.out::println);
 
         System.out.println("\n*********************** RICERCA PER AUTORE ***********************\n");
-        cd.ricercaPerAutore("J.R.R. Tolkien").forEach(System.out::println)*/
-        ;          // questo metodo è praticamente identico a quello della ricerca per titolo.
+        cd.ricercaPerAutore("J.R.R. Tolkien").forEach(System.out::println);          // questo metodo è praticamente identico a quello della ricerca per titolo.
 
         System.out.println("\n*********************** IN PRESTITO PER NUMERO DI TESSERA ***********************\n");
         pd.findElementiPrestitoInCorso(UUID.fromString("2cf68bbe-06b0-45d6-a5d0-70fd75bbc8e0")).forEach(System.out::println);
 
-        /*System.out.println("\n*********************** PRESTITI SCADUTI E NON RESTITUITI ***********************\n");
-        pd.scadutiNonRestituiti().forEach(System.out::println);*/
+        System.out.println("\n*********************** PRESTITI SCADUTI E NON RESTITUITI ***********************\n");
+        pd.scadutiNonRestituiti().forEach(System.out::println); */
 
         em.close();
         emf.close();
